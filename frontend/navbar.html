@@ -1,0 +1,29 @@
+<nav id="navbar">
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="help.html">Help</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="profile-container">
+        <img id="profilePic" src="images/default-avatar.png" class="profile-circle">
+    </div>
+
+    <div id="profileMenu" class="dropdown-menu">
+        <!-- This will be dynamically updated by JS -->
+        <button id="loginButton" class="google-signin-btn">
+            Login
+          </button>
+
+        <button id="profileButton" style="display: none;">Profile</button>
+        <button id="logoutButton" style="display: none;">Logout</button>
+    </div>
+
+    <!-- ✅ Popup Notification -->
+    <div id="loginPopup" class="popup">
+        <p id="popupMessage"></p>
+    </div>
+</nav>
+
+<script src="navbar_script.js"></script>

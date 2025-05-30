@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CHITRA | PROFILE</title>
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.jpeg" type="image/x-icon" />
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <div id="main-content">
+        <div class="profile-container1">
+            <div class="profile-info1">
+                <img id="profile-pic1" src="/images/default-avatar.png" alt="Profile Picture" />
+                <h2 id="user-name">User Name</h2>
+                <p id="user-email">user@example.com</p>
+            </div>
+
+            <div class="messages-section1">
+                <h3>Messages</h3>
+                <p>Total Messages: <span id="message-count">0</span></p>
+            </div>
+
+            <div class="settings-section1">
+                <h3>Settings</h3>
+                <label>
+                    Dark Mode:
+                    <input type="checkbox" id="dark-mode-toggle" />
+                </label>
+            </div>
+
+            <div class="generated-images1">
+                <h3>Generated Images</h3>
+                <p>Total Images Generated: <span id="image-count">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="navbar_script.js" defer></script>
+    <script src="profile.js" defer></script>
+</body>
+</html>

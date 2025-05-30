@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Flask-generated images
+backend/generated_images/
+
+# Logs and temp files
+*.log
+*.tmp
+*.DS_Store
+
+# Environment variables and secrets
+.env
+
+# VSCode settings (optional)
+.vscode/
+
+# OS-specific files
+Thumbs.db
+ehthumbs.db
+.DS_Store

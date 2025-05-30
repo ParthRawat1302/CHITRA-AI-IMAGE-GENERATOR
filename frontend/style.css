@@ -1,0 +1,774 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.image-generator {
+    display: flex;
+    position: relative;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    background: url('images/bg.jpeg');
+}
+
+.image-generator::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+    opacity: 0.5;
+}
+
+.image-generator .content {
+    color: #fff;
+    position: relative;
+    text-align: center;
+    padding: 0 15px;
+    max-width: 760px;
+}
+
+.image-generator h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.image-generator p {
+    font-size: 1.35rem;
+    margin-top: 10px;
+}
+
+.image-generator .generate-form {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    padding: 6px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 45px 0 15px;
+    background: #fff;
+    border-radius: 30px;
+}
+
+.generate-form .prompt-input {
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0 17px;
+}
+
+.generate-form .controls {
+    display: flex;
+    height: 100%;
+    gap: 15px;
+}
+
+.generate-form .img-quantity {
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+.generate-form .generate-btn {
+    padding: 0 25px;
+    font-weight: 500;
+    font-size: 1rem;
+    background: #121212;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+    background: #4949E7;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 0 15px;
+    max-width: 1250px;
+    margin: 50px auto;
+    justify-content: center;
+}
+
+.image-gallery .img-card {
+    width: 285px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    background: #f2f2f2;
+}
+
+.image-gallery .img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-gallery .img-card.loading img {
+    width: 80px;
+    height: 80px;
+}
+
+.image-gallery .img-card .download-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #fff;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-gallery .img-card:not(.loading):hover .download-btn {
+    display: flex;
+}
+
+.image-gallery .img-card .download-btn img {
+    width: 14px;
+    height: 14px;
+}
+
+@media screen and (max-width: 760px) {
+    .image-generator h1 {
+        font-size: 1.8rem;
+    }
+
+    .image-generator p {
+        font-size: 1rem;
+    }
+
+    .image-generator .generate-form {
+        margin-top: 30px;
+        height: 52px;
+        display: block;
+    }
+
+    .generate-form .controls {
+        height: 40px;
+        margin-top: 15px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .generate-form .img-quantity {
+        color: #fff;
+    }
+
+    .generate-form .img-quantity option {
+        color: #000;
+    }
+
+    .generate-form .generate-btn {
+        height: 100%;
+    }
+
+    .image-gallery .img-card:not(.loading) .download-btn {
+        display: flex;
+    }
+
+    .image-gallery {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .image-gallery .img-card {
+        width: 100%;
+    }
+}
+
+
+/* Navbar Styling */
+
+.banner {
+    margin-top: 20px; /* Adds space below navbar */
+    text-align: center;
+}
+
+/* Default Profile Image */
+.profile-circle img:not([src]) {
+    content: url("profile.png");
+}
+
+
+/* Navbar Styling */
+#navbar {
+    display: flex;
+    justify-content:space-around;  /* Moves elements apart */
+    align-items: center;
+    width: 100%;
+    background-color: #00227a;  /* Adjust navbar background color */
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li:first-child {
+    margin-left: 20px; /* Adjust space before Home */
+}
+/* Navbar Links Styling */
+.nav-links li a {
+    text-decoration: none; /* Removes underline */
+    color: white; /* Sets text color to white */
+    font-size: 18px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.nav-links li a:hover {
+    color: lightgray; /* Slight color change on hover */
+}
+
+/* Profile Section (Push to Right) */
+.profile-container {
+    position: relative;
+    margin-left: auto; /* Ensures it moves to the right */
+}
+
+/* Profile Icon */
+/* ✅ Profile Circle Hover Effect */
+.profile-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+/* ✅ Profile Circle Hover Effect */
+.profile-circle:hover {
+    border-color: #007BFF; /* Add a border color on hover */
+    transform: scale(1.1); /* Slightly enlarge the image */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+/* ✅ Dropdown Menu Styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    display: block;
+}
+
+/* Button Styling */
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for both background and transform */
+}
+
+/* Hover Effect for each button */
+.dropdown-menu button:hover {
+    background: #f1f1f1; /* Light gray background on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Styling for Login Button */
+#loginButton {
+    background-color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect for Login Button */
+#loginButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Styling for Profile Button */
+#profileButton {
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect for Profile Button */
+#profileButton:hover {
+    background-color: #3d0894; /* Green color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Styling for Logout Button */
+#logoutButton {
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect for Logout Button */
+#logoutButton:hover {
+    background-color: #530bab; /* Red color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Change Style When Profile Circle is Clicked
+.dropdown-menu.show #loginButton {
+    background-color: #fff; /* Darker Blue */
+    /* transform: scale(1.05); Slightly Bigger */
+/* }  */
+
+/* Ensure Buttons Inside Dropdown Are Displayed Properly */
+#profileMenu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* history */
+/* MAIN CONTAINER */
+#history-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* HISTORY CARD */
+  .history-item {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .history-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* IMAGE STYLE */
+  .history-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .history-image:hover {
+    transform: scale(1.05);
+  }
+  
+  /* TIMESTAMP */
+  .timestamp {
+    color: #aaa;
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+  /* DOWNLOAD BUTTON */
+  .download-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s, background 0.3s;
+  }
+  
+  .history-item:hover .download-btn {
+    opacity: 1;
+  }
+  
+  .download-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .download-btn i {
+    pointer-events: none;
+  }
+  
+ /* LIGHTBOX OVERLAY */
+/* LIGHTBOX WRAPPER */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+  }
+  
+  /* SHOW CLASS */
+  #lightbox.show {
+    display: flex;
+    opacity: 1;
+  }
+  
+  /* LIGHTBOX IMAGE */
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease;
+  }
+  
+  /* COMMON BUTTON STYLES */
+  .lightbox-button {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    z-index: 10001;
+  }
+  
+  .lightbox-button:hover {
+    transform: scale(1.1);
+    background: rgb(243, 240, 240);
+    color: #00ffff;
+  }
+  
+  .lightbox-button:hover i {
+    color: #00ffff;
+  }
+  
+  /* CLOSE BUTTON */
+  #lightbox-close {
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    color: white;
+  }
+  
+  /* NAVIGATION ARROWS */
+  #lightbox-prev,
+  #lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    color: white;
+  }
+  
+  #lightbox-prev {
+    left: 20px;
+  }
+  
+  #lightbox-next {
+    right: 20px;
+  }
+  
+  /* ACTION BUTTON POSITIONS */
+  #lightbox-download {
+    bottom: 30px;
+    right: 30px;
+    font-size: 26px;
+  }
+  
+  #lightbox-share {
+    bottom: 30px;
+    left: 30px;
+    font-size: 26px;
+  }
+  
+  #lightbox-delete {
+    bottom: 30px;
+    left: 100px;
+    font-size: 26px;
+    color: rgb(234, 216, 216);
+  }
+  
+  #lightbox-delete:hover {
+    color: #fffefe;
+  }
+  
+/* Help Page Styling */
+.help-container {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.help-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.help-container h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.help-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+
+/* Contact Page Styling */
+.contact-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.contact-container p {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Scoped Form Styling */
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-container label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.contact-container input, 
+.contact-container textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Scoped Button Styling */
+.contact-container button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-container button:hover {
+    background: #45a049;
+}
+
+.message-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.message-page-link {
+    display: block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.message-page-link:hover {
+    background-color: #45a049;
+}
+
+
+/* Message Response Styling */
+#responseMessage {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: green;
+}
+
+
+.popup {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #042778;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Spinner styles */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 20px auto;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+ /* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #1b0202;
+}
+
+body.dark-mode a {
+    color: #00060a;
+}
+
+body.dark-mode img {
+    filter: brightness(0.9);
+}
+
+
+/* Fix for headings (like User Name) */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #0f0101 !important;
+}
+
+/* Fix for paragraph text (like email) */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode a {
+    color: #1f0101 !important;
+}
+
+/* Dark mode specific style for the 'Previously Contact Messages' button */
+body.dark-mode .message-page-link {
+    color: white !important; /* Make text white */
+}
+
+
+/* Optional: override very dark grays */
+body.dark-mode .profile-info1 p {
+    color: #170202 !important;
+}
+
+body.dark-mode .profile-info1 h2 {
+    color: #180101 !important;
+}
+
+/* Force image-generator section to stay in light mode */
+body.dark-mode .image-generator {
+    background-color: white !important;
+    color: #fff !important;
+}
+
+body.dark-mode .image-generator h1,
+body.dark-mode .image-generator p,
+body.dark-mode .image-generator label,
+body.dark-mode .image-generator select,
+body.dark-mode .image-generator button {
+    color: #fff !important;
+}
+
+body.dark-mode .timestamp {
+    color: #dddddd !important; 
+}
+
+
+
+/* Optional: Add more specific overrides for components if needed */
+
+  

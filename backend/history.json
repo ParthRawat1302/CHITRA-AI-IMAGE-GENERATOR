@@ -1,0 +1,14 @@
+{
+  "guest": [
+    {
+      "image": "/generated_images/guest/image_1742493180043_0.png",
+      "prompt": "nature",
+      "timestamp": "2025-03-20T17:53:00.069Z"
+    },
+    {
+      "image": "/generated_images/guest/image_1742494403303_0.png",
+      "prompt": "nature",
+      "timestamp": "2025-03-20T18:13:23.312Z"
+    }
+  ]
+}

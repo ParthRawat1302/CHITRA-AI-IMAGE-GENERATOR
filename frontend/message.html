@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages | AI IMAGE GENERATOR</title>
+    <link rel="stylesheet" href="message.css">
+    <link rel="icon" href="images/favicon.jpeg" type="image/x-icon">
+    <script>
+        async function replyToMessage(messageId, form) {
+            const reply = form.reply.value;
+            const statusIcon = form.querySelector(".status-icon");
+
+            if (!reply) return false;
+
+            try {
+                const res = await fetch(`http://localhost:5000/reply-to-message/${messageId}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ reply })
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    form.reset(); // ✅ clear form
+                    showStatusIcon(statusIcon, "success");
+                    setTimeout(loadMessages, 1000); // Refresh list
+                } else {
+                    showStatusIcon(statusIcon, "fail");
+                }
+            } catch (err) {
+                console.error("Reply error:", err);
+                showStatusIcon(statusIcon, "fail");
+            }
+
+            return false;
+        }
+
+        function showStatusIcon(el, type) {
+            if (!el) return;
+            el.style.display = "inline-block";
+            el.innerHTML = type === "success"
+                ? "✅ Reply sent"
+                : "❌ Failed";
+            el.style.color = type === "success" ? "green" : "red";
+
+            setTimeout(() => {
+                el.style.display = "none";
+                el.innerHTML = "";
+            }, 2000);
+        }
+
+        async function loadMessages() {
+    try {
+        const response = await fetch("http://localhost:5000/get-messages", {
+            credentials: "include"
+        });
+
+        let data;
+        try {
+            data = await response.json();
+        } catch (parseErr) {
+            console.error("❌ Failed to parse response JSON:", parseErr);
+            return;
+        }
+
+        if (!response.ok) {
+            console.warn("⚠️ Message fetch failed:", data?.error || "Unknown error");
+            return;
+        }
+
+        const messages = data;
+        const messageList = document.getElementById("messages");
+
+        messageList.innerHTML = messages.map(msg => `
+            <li>
+                <strong>${msg.name} (${msg.email})</strong>:<br> ${msg.message}
+                <small>${new Date(msg.timestamp).toLocaleString()}</small>
+                ${msg.adminReply ? `
+                    <div class="admin-reply">
+                        <strong>Admin Reply:</strong><br> ${msg.adminReply}
+                    </div>
+                ` : isAdmin ? `
+                    <form onsubmit="return replyToMessage('${msg._id}', this)">
+                        <textarea name="reply" rows="2" placeholder="Write a reply..." required></textarea>
+                        <button type="submit">Send Reply</button>
+                        <div class="status-icon" style="display:none;"></div>
+                    </form>
+                ` : ""}
+            </li>
+        `).join("");
+    } catch (err) {
+        console.error("❌ Error loading messages:", err);
+    }
+}
+
+        let isAdmin = false;
+
+async function checkAdminStatus() {
+    try {
+        console.log("🔍 Checking admin status...");
+
+        const res = await fetch("http://localhost:5000/api/user", {
+            credentials: "include"
+        });
+        console.log("User check response:", res);
+        if (res.ok) {
+            const user = await res.json();
+            isAdmin = user.isAdmin;
+            loadMessages(); // Load after knowing if user is admin
+        } else {
+            console.warn("User not logged in or unauthorized");
+        }
+    } catch (err) {
+        console.error("Failed to check user info", err);
+    }
+}
+
+window.onload = checkAdminStatus;
+
+    </script>
+</head>
+<body>
+    <h1>Contact Messages</h1>
+    <ul id="messages"></ul>
+</body>
+</html>
